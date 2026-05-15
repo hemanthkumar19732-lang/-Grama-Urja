@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Grama-Urja</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#eef5f1;
+    color:#222;
+}
+
+/* LOGIN & REGISTER */
+
+.auth-container{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.auth-box{
+    width:100%;
+    max-width:420px;
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.1);
+}
+
+.auth-box h1{
+    text-align:center;
+    color:#146c43;
+    margin-bottom:10px;
+}
+
+.auth-box p{
+    text-align:center;
+    margin-bottom:25px;
+    color:#666;
+}
+
+.input-box{
+    margin-bottom:18px;
+}
+
+.input-box label{
+    display:block;
+    margin-bottom:7px;
+    font-weight:500;
+}
+
+.input-box input{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    font-size:15px;
+}
+
+.auth-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#146c43;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.auth-btn:hover{
+    background:#0f5132;
+}
+
+.switch-text{
+    text-align:center;
+    margin-top:18px;
+    color:#555;
+}
+
+.switch-text span{
+    color:#146c43;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* MAIN APP */
+
+#app{
+    display:none;
+}
+
+header{
+    background:linear-gradient(135deg,#146c43,#2e8b57);
+    padding:20px;
+    color:white;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    position:relative;
+}
+
+header h1{
+    font-size:32px;
+}
+
+header p{
+    margin-top:5px;
+    font-size:14px;
+}
+
+.admin{
+    margin-top:10px;
+    font-size:14px;
+    background:rgba(255,255,255,0.2);
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:30px;
+}
+
+/* MENU */
+
+.menu-btn{
+    position:absolute;
+    top:18px;
+    right:15px;
+    width:45px;
+    height:45px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+    cursor:pointer;
+    background:white;
+    color:#146c43;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+.side-menu{
+    position:fixed;
+    top:0;
+    right:-280px;
+    width:260px;
+    height:100%;
+    background:white;
+    box-shadow:-4px 0 12px rgba(0,0,0,0.15);
+    padding:25px;
+    transition:0.4s;
+    z-index:1000;
+}
+/* ADD THIS CSS */
+
+.menu-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.close-btn{
+    width:35px;
+    height:35px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#146c43;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.side-menu.active{
+    right:0;
+}
+
+.side-menu h3{
+    color:#146c43;
+    margin-bottom:20px;
+}
+
+.menu-user{
+    background:#eef5f1;
+    padding:12px;
+    border-radius:12px;
+    margin-bottom:20px;
+    font-weight:500;
+}
+
+.side-menu button{
+    width:100%;
+    margin-bottom:15px;
+    background:#146c43;
+    color:white;
+}
+
+.container{
+    padding:20px;
+    max-width:550px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    border-radius:22px;
+    padding:22px;
+    margin-top:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.card h2{
+    color:#146c43;
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:500;
+}
+
+select,input{
+    width:100%;
+    padding:13px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    margin-bottom:15px;
+    font-size:15px;
+}
+
+.status-box{
+    text-align:center;
+    padding:30px;
+    border-radius:18px;
+    color:white;
+    transition:0.3s;
+}
+
+.status-on{
+    background:#198754;
+}
+
+.status-off{
+    background:#dc3545;
+}
+
+.power-icon{
+    font-size:55px;
+    margin-bottom:10px;
+}
+
+.status-text{
+    font-size:30px;
+    font-weight:700;
+}
+
+.updated{
+    margin-top:10px;
+    font-size:14px;
+}
+
+.btn-group{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+button{
+    flex:1;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.on-btn{
+    background:#198754;
+    color:white;
+}
+
+.off-btn{
+    background:#dc3545;
+    color:white;
+}
+
+button:hover{
+    transform:scale(1.03);
+}
+
+.timer-result{
+    margin-top:10px;
+    font-size:17px;
+    font-weight:600;
+    color:#146c43;
+}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    color:#666;
+    font-size:14px;
+}
+
+.notification{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#111;
+    color:white;
+    padding:15px 20px;
+    border-radius:12px;
+    display:none;
+    z-index:999;
+    animation:slide 0.4s ease;
+}
+
+@keyframes slide{
+    from{
+        transform:translateX(100%);
+        opacity:0;
+    }
+    to{
+        transform:translateX(0);
+        opacity:1;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+
+<div class="auth-container" id="loginPage">
+
+    <div class="auth-box">
+
+        <h1>⚡ Grama-Urja</h1>
+        <p>Login to Continue</p>
+
+        <div class="input-box">
+            <label>Email</label>
+            <input type="email" id="loginEmail" placeholder="Enter email">
+        </div>
+
+        <div class="input-box">
+            <label>Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter password">
+        </div>
+
+        <button class="auth-btn" onclick="login()">
+            Login
+        </button>
+
+        <div class="switch-text">
+            Don't have an account?
+            <span onclick="showRegister()">Register</span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- REGISTER -->
+
+<div class="auth-container" id="registerPage" style="display:none;">
+
+    <div class="auth-box">
+
+        <h1>Create Account</h1>
+        <p>Register New User</p>
+
+        <div class="input-box">
+            <label>Full Name</label>
+            <input type="text" id="regName" placeholder="Enter full name">
+        </div>
+
+        <div class="input-box">
+            <label>Email</label>
+            <input type="email" id="regEmail" placeholder="Enter email">
+        </div>
+
+        <div class="input-box">
+            <label>Password</label>
+            <input type="password" id="regPassword" placeholder="Enter password">
+        </div>
+
+        <button class="auth-btn" onclick="register()">
+            Register
+        </button>
+
+        <div class="switch-text">
+            Already have an account?
+            <span onclick="showLogin()">Login</span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MAIN APP -->
+
+<div id="app">
+
+<header>
+
+    <h1>⚡ Grama-Urja</h1>
+    <p>Smart Rural Power Monitoring System</p>
+
+    <div class="admin">
+        Admin : Hemanth Kumar
+    </div>
+
+    <div class="menu-btn" onclick="toggleMenu()">
+        ☰
+    </div>
+
+</header>
+
+<!-- SIDE MENU --> 
+
+<div class="side-menu" id="sideMenu">
+
+    <div class="menu-top">
+
+        <h3>User Panel</h3>
+
+        <div class="close-btn" onclick="toggleMenu()">
+            ✖
+        </div>
+
+    </div>
+
+    <div class="menu-user">
+        Logged in as :
+        <span id="loggedUser">User</span>
+    </div>
+
+    <button onclick="customerSupport()">
+        Customer Support
+    </button>
+
+    <button onclick="logout()">
+        Logout
+    </button>
+
+</div>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Select Village & Zone</h2>
+
+        <label>Village</label>
+
+        <select id="village">
+            <option>Angondahalli</option>
+            <option>Kolar</option>
+            <option>Malur</option>
+            <option>Bangarpet</option>
+            <option>Mulbagal</option>
+            <option>Srinivaspur</option>
+            <option>KGF</option>
+            <option>Hosakote</option>
+            <option>Chintamani</option>
+            <option>Sidlaghatta</option>
+        </select>
+
+        <label>Transformer Zone</label>
+
+        <select id="zone">
+            <option>Zone A</option>
+            <option>Zone B</option>
+            <option>Zone C</option>
+            <option>Zone D</option>
+        </select>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Live Power Status</h2>
+
+        <div id="statusBox" class="status-box status-off">
+
+            <div class="power-icon">🔴</div>
+
+            <div id="statusText" class="status-text">
+                POWER OFF
+            </div>
+
+            <div id="updatedTime" class="updated">
+                Updated just now
+            </div>
+
+        </div>
+
+        <div class="btn-group">
+
+            <button class="on-btn" onclick="setPower('ON')">
+                Power ON
+            </button>
+
+            <button class="off-btn" onclick="setPower('OFF')">
+                Power OFF
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Pump Timer Calculator</h2>
+
+        <label>Crop Type</label>
+
+        <select id="crop">
+            <option>Rice</option>
+            <option>Wheat</option>
+            <option>Sugarcane</option>
+            <option>Vegetables</option>
+            <option>Maize</option>
+            <option>Cotton</option>
+            <option>Groundnut</option>
+            <option>Tomato</option>
+            <option>Onion</option>
+            <option>Ragi</option>
+        </select>
+
+        <label>Field Size (Acres)</label>
+
+        <input type="number" id="acre" placeholder="Enter field size">
+
+        <button class="on-btn" onclick="calculateTime()">
+            Calculate Pump Time
+        </button>
+
+        <div id="timerResult" class="timer-result"></div>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    Developed for Rural Smart Energy Monitoring
+</div>
+
+</div>
+
+<div class="notification" id="notification"></div>
+
+<script>
+
+let users = [];
+let currentPowerStatus = "OFF";
+
+function showRegister(){
+
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("registerPage").style.display = "flex";
+}
+
+function showLogin(){
+
+    document.getElementById("registerPage").style.display = "none";
+    document.getElementById("loginPage").style.display = "flex";
+}
+
+function register(){
+
+    let name = document.getElementById("regName").value;
+    let email = document.getElementById("regEmail").value;
+    let password = document.getElementById("regPassword").value;
+
+    if(name==="" || email==="" || password===""){
+
+        alert("Please fill all fields");
+        return;
+    }
+
+    users.push({
+        name:name,
+        email:email,
+        password:password
+    });
+
+    alert("Registration Successful!");
+
+    showLogin();
+}
+
+function login(){
+
+    let email = document.getElementById("loginEmail").value;
+    let password = document.getElementById("loginPassword").value;
+
+    let foundUser = users.find(user =>
+        user.email === email &&
+        user.password === password
+    );
+
+    if(foundUser){
+
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("app").style.display = "block";
+
+        document.getElementById("loggedUser").innerHTML =
+        foundUser.name;
+
+        showNotification("Welcome " + foundUser.name);
+
+    }else{
+
+        alert("Invalid Email or Password");
+    }
+}
+
+function logout(){
+
+    document.getElementById("app").style.display = "none";
+    document.getElementById("loginPage").style.display = "flex";
+
+    document.getElementById("sideMenu").classList.remove("active");
+}
+
+function toggleMenu(){
+
+    document.getElementById("sideMenu").classList.toggle("active");
+}
+
+function customerSupport(){
+
+    alert("Customer Support : 7339240650");
+}
+
+let statusText = document.getElementById("statusText");
+let statusBox = document.getElementById("statusBox");
+let updatedTime = document.getElementById("updatedTime");
+let notification = document.getElementById("notification");
+
+function setPower(status){
+
+    currentPowerStatus = status;
+
+    let currentTime = new Date().toLocaleTimeString();
+
+    if(status === "ON"){
+
+        statusText.innerHTML = "POWER ON";
+
+        statusBox.classList.remove("status-off");
+        statusBox.classList.add("status-on");
+
+        document.querySelector(".power-icon").innerHTML = "🟢";
+
+        showNotification("⚡ Power is ON in your area");
+
+    }else{
+
+        statusText.innerHTML = "POWER OFF";
+
+        statusBox.classList.remove("status-on");
+        statusBox.classList.add("status-off");
+
+        document.querySelector(".power-icon").innerHTML = "🔴";
+
+        showNotification("❌ Power is OFF in your area");
+    }
+
+    updatedTime.innerHTML = "Updated at " + currentTime;
+}
+
+function calculateTime(){
+
+    if(currentPowerStatus !== "ON"){
+
+        alert("Power is OFF. Cannot calculate pump usage.");
+        return;
+    }
+
+    let crop = document.getElementById("crop").value;
+    let acre = document.getElementById("acre").value;
+
+    if(acre === ""){
+
+        alert("Please enter field size");
+        return;
+    }
+
+    let time = 0;
+
+    switch(crop){
+
+        case "Rice":
+            time = acre * 3;
+            break;
+
+        case "Wheat":
+            time = acre * 2;
+            break;
+
+        case "Sugarcane":
+            time = acre * 4;
+            break;
+
+        case "Vegetables":
+            time = acre * 1.5;
+            break;
+
+        case "Maize":
+            time = acre * 2.5;
+            break;
+
+        case "Cotton":
+            time = acre * 3.5;
+            break;
+
+        case "Groundnut":
+            time = acre * 2;
+            break;
+
+        case "Tomato":
+            time = acre * 1.8;
+            break;
+
+        case "Onion":
+            time = acre * 1.7;
+            break;
+
+        case "Ragi":
+            time = acre * 1.2;
+            break;
+    }
+
+    document.getElementById("timerResult").innerHTML =
+    "Recommended Pump Time : " + time + " Hours";
+}
+
+function showNotification(message){
+
+    notification.innerHTML = message;
+
+    notification.style.display = "block";
+
+    setTimeout(() => {
+
+        notification.style.display = "none";
+
+    },3000);
+}
+
+</script>
+
+</body>
+</html>
