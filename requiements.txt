@@ -1,10 +1,32 @@
-Technologies Used
-HTML5
-CSS3
-JavaScript
-Responsive Web Design
-Local Storage / Browser Storage
-Google Fonts (Poppins)
-Mobile-Friendly UI Design
-Notification Alerts
-Community-Based Status System
+
+Grama-Urja Requirements
+
+Frontend:
+- HTML5
+- CSS3
+- JavaScript
+
+UI Components:
+- Responsive Design
+- Google Fonts (Poppins)
+- Notification System
+- Side Navigation Menu
+
+Features:
+- Login & Registration
+- Live Power Status
+- Pump Timer Calculator
+- Village & Zone Selection
+- Customer Support Section
+- Power ON/OFF Alerts
+
+Browser Support:
+- Chrome
+- Edge
+- Firefox
+- Brave
+
+Recommended Tools:
+- VS Code
+- GitHub
+- Netlify / Vercel (Deployment)
