@@ -1,0 +1,10 @@
+Technologies Used
+HTML5
+CSS3
+JavaScript
+Responsive Web Design
+Local Storage / Browser Storage
+Google Fonts (Poppins)
+Mobile-Friendly UI Design
+Notification Alerts
+Community-Based Status System
